@@ -1,0 +1,66 @@
+<!--<staffs-form [hidden]="!user"></staffs-form>-->
+<!--<staffs-form> </staffs-form>-->
+<!--<div [hidden]="user">You need to login to create new parties!</div>-->
+
+<!--<h1>Hello {{n}}</h1>-->
+
+<!--<p-modal header="Staff Maintenance: New..." [(visible)]="display" width="600">
+
+    <staffs-form [staffModelItem]="data" [action]="action" (HideDialogEvent)="hideDialog($event)"> </staffs-form>
+
+</p-modal>-->
+
+<!--<p-modal header="Staff Maintenance2: New..." [(visible)]="display" width="600">
+
+<button><Click here/button>
+  
+</p-modal>-->
+<!--<input type="text" [(ngModel)]="n" />-->
+<form class="form-inline">
+    <input type="text" class="form-control" #searchString placeholder="Search" />
+    <button type="button" class="btn btn-primary" (click)="search(searchString.value)">Search</button>
+</form>
+
+<!--<pagination [boundaryLinks]="true" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [(ngModel)]="curPage.value" class="pagination-sm"
+    (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>-->
+
+<!--<pagination [(ngModel)]="curPage.value"   class="pagination-sm"
+    previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>-->
+
+
+
+<div style="background:white">
+    <button (click)="pageChange(1)">Click # 1</button>
+    <button (click)="pageChange(2)">Click # 2</button>
+    <button (click)="pageChange(3)">Click # 3</button>
+
+    <!--<ul>
+        <li *ngFor="let item of staffsArray | paginate: { itemsPerPage: 4, currentPage: curPage.curValue }">{{item.name}}</li>
+    </ul>-->
+
+    <!--<pagination-controls (pageChange)="pageChange($event)"></pagination-controls>-->
+
+</div>
+
+
+
+<pre class="card card-block card-header">The selected page no: {{curPage.curValue}}/{{ maxPagesCalc }}</pre>
+
+
+<div class="container">
+    <div class="row">
+
+        <staffs-item *ngFor="let staff of staffs ; let i = index" [staffModel]="staff" [theIndex]="i"></staffs-item>
+        <!--<staffs-item *ngFor="let staff of staffs | paginate: { itemsPerPage: 4, currentPage: curPage.curValue } ; let i = index" [staffModel]="staff" [theIndex]="i"></staffs-item>-->
+
+
+
+    </div>
+    <div style="text-align:right;width:100%;">
+        <button (click)="showDialog(0)" class="btn btn-primary btn-sm">Add Staff!</button>
+    </div>
+
+    <div style="text-align:right;width:100%;" *ngFor="let staff of staffs ; let i = index">
+        <button (click)="pageChange(i)">Click # {{i}}</button>
+    </div>
+</div>
